@@ -49,12 +49,13 @@ def _print_welcome():
     print("*"* 50)
     print("¿Qué quieres hacer?")
     print("[C]rear cliente")
+    print("[L]eer clientes")
     print("[A]ctualizar cliente")
     print("[E]liminar cliente")
 
 # 4 Refactoring de Cual es el nombre del cliente
 def _get_client_name():
-    return input("Cual es el nombre del cliente ")
+    return input("Cual es el nombre del cliente: ")
 
 
 # 0 Ejecución del programa
@@ -68,6 +69,8 @@ if __name__ == '__main__':
         client_name = _get_client_name()
         create_client(client_name)
         list_clients()
+    elif command =="L":
+        list_clients()
     elif command == "E":
         client_name = _get_client_name()
         delete_client(client_name)
@@ -77,7 +80,6 @@ if __name__ == '__main__':
         update_client_name = input("Cual es el el nuevo nombre del cliente: ")
         update_client(client_name, update_client_name)
         list_clients()
-
     else:
         print("Comando invalido")
 
