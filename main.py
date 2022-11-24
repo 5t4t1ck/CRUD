@@ -7,8 +7,12 @@ clients = "Diego,Juan,"
 #1. Creamos la función create_client
 def create_client(client_name):
     global clients
-    clients += client_name
-    _add_comma()
+    
+    if client_name not in clients:
+        clients += client_name
+        _add_comma()
+    else:
+        print("El cliente ya está en la lista de clientes")
 
 #2. Creamos la funcion list_clients
 def list_clients():
@@ -32,9 +36,14 @@ def _print_welcome():
 
 # 0 Ejecución del programa
 if __name__ == '__main__':
-    list_clients()
-
-    create_client('Luis')
-
-    list_clients()
+    _print_welcome()
+    command = input()
+    if command == "C":
+        client_name = input("Cual es el nombre del cliente: ")
+        create_client(client_name)
+        list_clients()
+    elif command == "D":
+        pass
+    else:
+        print("Comando invalido")
 
