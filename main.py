@@ -1,7 +1,7 @@
 """
 Crear un CRUD de algún negocio
 """
-
+import sys
 clients = "Diego,Juan,"
 
 #1. Creamos la función create_client
@@ -67,7 +67,19 @@ def _print_welcome():
 
 # 4 Refactoring de Cual es el nombre del cliente
 def _get_client_name():
-    return input("Cual es el nombre del cliente: ")
+    client_name = None
+
+    while not client_name:
+        client_name = input("Cual es el nombre del cliente: ")
+
+        if client_name == "exit":
+            client_name = None
+            break
+        
+    if not client_name:
+        sys.exit()
+
+    return  client_name
 
 
 # 0 Ejecución del programa
