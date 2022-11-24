@@ -37,6 +37,17 @@ def delete_client(client_name):
     else:
         print("El cliente no está en la lista de clientes")
 
+#6 Creamos la función search_client()
+def search_client(client_name):
+    clients_list = clients.split(",")
+
+    for client in clients_list:
+        if client != client_name:
+            continue
+        else:
+            return True
+        
+
 #Funcion de ayuda ','
 def _add_comma():
     global clients
@@ -52,6 +63,7 @@ def _print_welcome():
     print("[L]eer clientes")
     print("[A]ctualizar cliente")
     print("[E]liminar cliente")
+    print("[B]uscar cliente")
 
 # 4 Refactoring de Cual es el nombre del cliente
 def _get_client_name():
@@ -80,6 +92,14 @@ if __name__ == '__main__':
         update_client_name = input("Cual es el el nuevo nombre del cliente: ")
         update_client(client_name, update_client_name)
         list_clients()
+    elif command == "B":
+        client_name = _get_client_name()
+        found = search_client(client_name)
+
+        if found:
+            print("El cliente está en la lista de clientes")
+        else:
+            print("El cliente: {} no está en la lista de clientes".format(client_name))
     else:
         print("Comando invalido")
 
