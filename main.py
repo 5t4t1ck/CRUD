@@ -2,29 +2,30 @@
 Crear un CRUD de algún negocio
 """
 import sys
-clients = "Diego,Juan,"
+
+clients = ["Diego","Juan"]
 
 #1. Creamos la función create_client
 def create_client(client_name):
     global clients
     
     if client_name not in clients:
-        clients += client_name
-        _add_comma()
+        clients.append(client_name)
     else:
         print("El cliente ya está en la lista de clientes")
 
 #2. Creamos la funcion list_clients
 def list_clients():
-    global clients
-    print(clients)
+    for idx, client in enumerate(clients):
+        print("{}:{}".format(idx, client))
 
 # 4 Creamos la función update_client()
 def update_client(client_name, update_client_name):
     global clients
 
     if client_name in clients:
-        clients = clients.replace(client_name + ",", update_client_name + ",")
+        index = clients.index(client_name)
+        clients[index] = update_client_name
     else:
         print("El cliente no esta en la lista de clientes")
 
@@ -33,26 +34,18 @@ def delete_client(client_name):
     global clients
 
     if client_name in clients:
-        clients = clients.replace(client_name + ",", "")
+        clients.remove(client_name)
     else:
         print("El cliente no está en la lista de clientes")
 
 #6 Creamos la función search_client()
 def search_client(client_name):
-    clients_list = clients.split(",")
-
-    for client in clients_list:
+    for client in clients:
         if client != client_name:
             continue
         else:
             return True
         
-
-#Funcion de ayuda ','
-def _add_comma():
-    global clients
-
-    clients += ','
 
 #3 Creamos la función _print_walcome()
 def _print_welcome():
